@@ -1,22 +1,19 @@
-# ● Ocupar los métodos de array y string que estudiamos.
-# ● Puedes ocupar el método para calcular el promedio del ejercicio
-# anterior, pero debes agregarlo al archivo nuevo.
-# ● Debes respetar el nombre del método.
-# ● Puedes probar el programa llamando al método y mostrando el resultado, pero no es
-# necesario que el programa entregue resultado alguno, la revisión se hace llamando al
-# método.
+pasos = ['100', '21', '231as', '2031', '1052000', '213b', 'b123']
 
-array1 = [1000, 800, 250, 300, 500, 2500]
-array2 = [100, 80, 25, 30, 50, 250]
+def clear_steps(arr)
+  #descartar los que no son numeros
+  valid_steps = arr.select do |step|
+    step != /[\D]/.match(step)
 
-def compara_arrays(arr1, arr2)
-  average1 = arr1.sum / arr1.size
-  average2 = arr2.sum / arr2.size
-  if average1 > average2
-    average1
-  else
-    average2
   end
+  valid_steps_to_i = valid_steps.map do |step|
+    step.to_i
+  end
+  #descartar < 200 o > a 100000
+  valid_steps_to_i.select do |step|
+    step >=200 && step <= 100000
+  end
+  #deben ser numeros los valores
+  #devolver arreglo filtrado
 end
-
-print compara_arrays(array1, array2)
+print clear_steps(pasos)
